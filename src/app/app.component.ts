@@ -8,6 +8,9 @@ import { AuthConfig, NullValidationHandler, OAuthService } from 'angular-oauth2-
 })
 export class AppComponent {
   title = 'keycloak-frontend';
+  username: string;
+  isLogged: boolean ;
+  isAdmin: boolean ;
 
   constructor(private oauthService: OAuthService) {
     this.configure();
@@ -26,14 +29,28 @@ export class AppComponent {
     this.oauthService.configure(this.authConfig);
     this.oauthService.tokenValidationHandler = new NullValidationHandler();
     this.oauthService.setupAutomaticSilentRefresh();
-    this.oauthService.loadDiscoveryDocument().then(() => this.oauthService.tryLogin());
+    this.oauthService.loadDiscoveryDocument().then(() => this.oauthService.tryLogin())
+      .then(() => {
+        console.log("this.oauthService.getIdentityClaims() >>>>  " + JSON.stringify(this.oauthService.getIdentityClaims()))
+        if(this.oauthService.getIdentityClaims()) {
+          this.isLogged = this.getIsLogged();
+          this.isAdmin = this.getIsAdmin();
+          this.username = this.oauthService.getIdentityClaims()['preferred_username'];
+        }
+      })
   }
 
-  login():void {
-    this.oauthService.initImplicitFlowInternal();
+  public getIsLogged(): boolean {
+    return (this.oauthService.hasValidIdToken() && this.oauthService.hasValidAccessToken());
   }
 
-  logout(): void {
-    this.oauthService.logOut();
+  public getIsAdmin(): boolean {
+    const token = this.oauthService.getAccessToken();
+    const payload = token.split('.')[1];
+    const payloadDecodedJson = atob(payload);
+    const payloadDecoded = JSON.parse(payloadDecodedJson);
+    console.log(payloadDecoded.realm_access.roles)
+    console.log(payloadDecoded.realm_access.roles.indexOf('realm-admin') !== -1 ? "SOU ADMIN" : "SOU USER");
+    return payloadDecoded.realm_access.roles.indexOf('realm-admin') !== -1;
   }
 }
