@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "keycloak-frontend"
+    }
+  },
+  "defaultProject": "keycloak-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
