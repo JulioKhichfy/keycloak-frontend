@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthConfig, NullValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import { MessageService } from './services/message.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   isLogged: boolean ;
   isAdmin: boolean ;
 
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService,
+              private messageService: MessageService) {
     this.configure();
   }
 
@@ -35,13 +37,18 @@ export class AppComponent {
         if(this.oauthService.getIdentityClaims()) {
           this.isLogged = this.getIsLogged();
           this.isAdmin = this.getIsAdmin();
-          this.username = this.oauthService.getIdentityClaims()['preferred_username'];
+          this.username = this.getUsername();
+          this.messageService.sendMessage(this.username);
         }
       })
   }
 
   public getIsLogged(): boolean {
     return (this.oauthService.hasValidIdToken() && this.oauthService.hasValidAccessToken());
+  }
+
+  getUsername(){
+    return this.oauthService.getIdentityClaims()['preferred_username'];
   }
 
   public getIsAdmin(): boolean {

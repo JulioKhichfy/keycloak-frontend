@@ -8,12 +8,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { MenuComponent } from './menu/menu.component';
+import { ListaComponent } from './foo/lista/lista.component';
+import { DetailComponent } from './foo/detail/detail.component';
+import { CreateComponent } from './foo/create/create.component';
+import { UpdateComponent } from './foo/update/update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    ListaComponent,
+    DetailComponent,
+    CreateComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
