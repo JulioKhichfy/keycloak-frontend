@@ -1,1 +1,23 @@
-<p>create works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+                
+                    <div class="form-group">
+                    <label for="name">Foo Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        formControlName="fooNameControl"
+                        class="form-control">
+                    <span *ngIf="!projectForm.get('fooNameControl').valid && projectForm.get('fooNameControl').touched" class="help-block">
+                        <span *ngIf="projectForm.get('fooNameControl').errors['required']">This field is required!</span>
+                        <span *ngIf="projectForm.get('fooNameControl').errors['invalidProjectName']">somente ate 5 caracteres!</span>
+                    </span>
+                    </div>
+                    <button [disabled]="!(projectForm.status !== 'INVALID')" class="btn btn-primary" type="submit">Submit</button>
+                
+            </form>
+        </div>
+    </div>
+</div>

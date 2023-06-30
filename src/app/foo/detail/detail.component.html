@@ -1,1 +1,18 @@
-<p>detail works!</p>
+<div class="container mt-4">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body" *ngIf="(foo$ | async) as data">
+          <h5 class="card-title">Detalhe</h5>
+          <h6 class="card-subtitle mb-2 text-muted">---foo---</h6>
+          <p class="card-text"> const id = this.activedRoute.snapshot.params.id</p>
+          <a href="#" class="card-link">{{data.id}}</a>
+          <a href="#" class="card-link">{{data.name}}</a>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-outline-primary" (click)="voltar()">
+                <i class="fas fa-arrow-alt-circle-left"></i> Voltar
+            </button>
+        </div>
+    </div>
+
+</div>

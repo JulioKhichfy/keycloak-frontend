@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { MenuComponent } from './menu/menu.component';
 import { ListaComponent } from './foo/lista/lista.component';
@@ -28,6 +28,7 @@ import { UpdateComponent } from './foo/update/update.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     OAuthModule.forRoot({
       resourceServer: {
           allowedUrls: ['http://localhost:8080/foo'],
