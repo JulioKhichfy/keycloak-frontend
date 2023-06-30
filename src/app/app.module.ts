@@ -12,6 +12,7 @@ import { ListaComponent } from './foo/lista/lista.component';
 import { DetailComponent } from './foo/detail/detail.component';
 import { CreateComponent } from './foo/create/create.component';
 import { UpdateComponent } from './foo/update/update.component';
+import { Create2Component } from './foo/create2/create2.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UpdateComponent } from './foo/update/update.component';
     ListaComponent,
     DetailComponent,
     CreateComponent,
-    UpdateComponent
+    UpdateComponent,
+    Create2Component
   ],
   imports: [
     BrowserModule,

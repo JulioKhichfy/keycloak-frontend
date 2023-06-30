@@ -5,6 +5,7 @@ import { ListaComponent } from './foo/lista/lista.component';
 import { DetailComponent } from './foo/detail/detail.component';
 import { UpdateComponent } from './foo/update/update.component';
 import { CreateComponent } from './foo/create/create.component';
+import { Create2Component } from './foo/create2/create2.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'detail/:id', component: DetailComponent},
   {path: 'update/:id', component: UpdateComponent},
   {path: 'create', component: CreateComponent},
+  {path: 'create2', component: Create2Component},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
