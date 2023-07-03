@@ -9,12 +9,19 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  username$: Observable<any>;
+  isLogging = true;
+  //username$: Observable<any>;
+  username: string;
 
   constructor(private messageService: MessageService) { }
 
-  ngOnInit(): void {
-      this.username$ = this.messageService.getMessage();
+  ngOnInit() {
+      //this.username$ = this.messageService.getMessage();
+
+      this.messageService.getMessage().subscribe((data)=>{
+        this.username = data['text'];
+      });
+      this.isLogging = false;
   }
 
 }
