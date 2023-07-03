@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <form (ngSubmit) = "onRegister()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="userName">Username:</label>
+                    <input type="text" class="form-control" name="userName" id="userName"
+                    [(ngModel)]="username" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" name="firstName" id="firstName"
+                    [(ngModel)]="firstname" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" name="lastName" id="lastName"
+                    [(ngModel)]="lastname" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" name="email" id="email"
+                    [(ngModel)]="email" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                    [(ngModel)]="password" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                    <i class="fas fa-plus-circle"></i> Registrar-se
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-block" (click)="voltar()">
+                    <i class="fas fa-arrow-alt-circle-left"></i> Voltar
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+</div>

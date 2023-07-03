@@ -33,6 +33,9 @@
             <a class="nav-link" href="#">
                 {{username}}</a>
         </li>
+        <button *ngIf="!isLogged" class="btn btn-outline-warning mr-3" routerLink="/signup">
+            <i class="fas fa-user-plus"></i> Adicionar Usuário
+        </button>
         <button *ngIf="!isLogged" class="btn btn-outline-success" (click)="login()">
             <i class="fas fa-sign-in-all"></i> Iniciar Sessão
         </button>
